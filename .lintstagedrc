@@ -1,11 +1,5 @@
 {
-  "src/**/*.+(js|json|ts|tsx)": [
-    "eslint"
-  ],
-  "src/**/*.+(ts|tsx)": [
-      "tsc-files --noEmit"
-    ],
-  "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-    "prettier --write"
-  ]
+    "src/**/*.+(js|json|ts|tsx)": ["eslint"],
+    "src/**/*.+(ts|tsx)": ["tsc-files --noEmit"],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": ["prettier --write"]
 }
