@@ -7,6 +7,7 @@
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
+        "test": "vitest",
         "preview": "vite preview",
         "prepare": "husky",
         "format": "pnpm exec prettier --write",
@@ -37,6 +38,7 @@
         "tsc-files": "^1.1.4",
         "typescript": "~5.7.2",
         "typescript-eslint": "^8.24.1",
-        "vite": "^6.2.0"
+        "vite": "^6.2.0",
+        "vitest": "^3.1.1"
     }
 }
