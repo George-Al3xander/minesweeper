@@ -40,4 +40,19 @@ export class Coords {
     toString(): StringCoords {
         return `(${this.x},${this.y})`;
     }
+
+    *[Symbol.iterator]() {
+        for (let dx = -1; dx <= 1; dx++) {
+            for (let dy = -1; dy <= 1; dy++) {
+                if (dx === 0 && dy === 0) continue;
+
+                const ni = this.x + dx;
+                const nj = this.y + dy;
+
+                if (ni >= 0 && nj >= 0) {
+                    yield new Coords(ni, nj);
+                }
+            }
+        }
+    }
 }
