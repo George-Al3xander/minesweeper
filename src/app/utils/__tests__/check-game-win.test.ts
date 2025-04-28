@@ -4,46 +4,46 @@ import { createInitialGrid } from "../create-initial-grid";
 
 describe("checkGameWin", () => {
     it("returns true if all non-mine cells are open", () => {
-        const grid = createInitialGrid({ rows: 2, cols: 2 });
+        const cells = createInitialGrid({ rows: 2, cols: 2 });
 
-        grid[0][0].hasMine = true;
+        cells[0][0].hasMine = true;
 
-        grid[0][1].isOpen = true;
-        grid[1][0].isOpen = true;
-        grid[1][1].isOpen = true;
+        cells[0][1].isOpen = true;
+        cells[1][0].isOpen = true;
+        cells[1][1].isOpen = true;
 
-        const result = checkGameWin({ grid, minesCount: 1 });
+        const result = checkGameWin({ cells, mines: 1 });
         expect(result).toBe(true);
     });
 
     it("returns false if not all non-mine cells are open", () => {
-        const grid = createInitialGrid({ rows: 2, cols: 2 });
+        const cells = createInitialGrid({ rows: 2, cols: 2 });
 
-        grid[0][0].hasMine = true;
+        cells[0][0].hasMine = true;
 
-        grid[0][1].isOpen = true;
-        grid[1][0].isOpen = true;
+        cells[0][1].isOpen = true;
+        cells[1][0].isOpen = true;
 
-        const result = checkGameWin({ grid, minesCount: 1 });
+        const result = checkGameWin({ cells, mines: 1 });
         expect(result).toBe(false);
     });
 
-    it("returns true when grid has 0 mines and all are open", () => {
-        const grid = createInitialGrid({ rows: 1, cols: 2 });
+    it("returns true when cells has 0 mines and all are open", () => {
+        const cells = createInitialGrid({ rows: 1, cols: 2 });
 
-        grid[0][0].isOpen = true;
-        grid[0][1].isOpen = true;
+        cells[0][0].isOpen = true;
+        cells[0][1].isOpen = true;
 
-        const result = checkGameWin({ grid, minesCount: 0 });
+        const result = checkGameWin({ cells, mines: 0 });
         expect(result).toBe(true);
     });
 
-    it("returns false when grid has 0 mines and not all are open", () => {
-        const grid = createInitialGrid({ rows: 1, cols: 2 });
+    it("returns false when cells has 0 mines and not all are open", () => {
+        const cells = createInitialGrid({ rows: 1, cols: 2 });
 
-        grid[0][0].isOpen = true;
+        cells[0][0].isOpen = true;
 
-        const result = checkGameWin({ grid, minesCount: 0 });
+        const result = checkGameWin({ cells, mines: 0 });
         expect(result).toBe(false);
     });
 });

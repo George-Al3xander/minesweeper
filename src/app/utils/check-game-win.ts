@@ -1,15 +1,15 @@
 import { TCell } from "@/types/models/cell";
 
 export const checkGameWin = ({
-    grid,
-    minesCount,
+    cells,
+    mines,
 }: {
-    grid: TCell[][];
-    minesCount: number;
+    cells: TCell[][];
+    mines: number;
 }): boolean => {
-    const flatGrid = grid.flat();
+    const flatGrid = cells.flat();
 
-    const cellsCountRequiredToWin = flatGrid.length - minesCount;
+    const cellsCountRequiredToWin = flatGrid.length - mines;
     const openedCellsCount = flatGrid.filter(
         (c) => !c.hasMine && c.isOpen,
     ).length;
