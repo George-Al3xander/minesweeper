@@ -12,7 +12,7 @@ describe("checkGameWin", () => {
         grid[1][0].isOpen = true;
         grid[1][1].isOpen = true;
 
-        const result = checkGameWin({ grid, mines: 1 });
+        const result = checkGameWin({ grid, minesCount: 1 });
         expect(result).toBe(true);
     });
 
@@ -24,7 +24,7 @@ describe("checkGameWin", () => {
         grid[0][1].isOpen = true;
         grid[1][0].isOpen = true;
 
-        const result = checkGameWin({ grid, mines: 1 });
+        const result = checkGameWin({ grid, minesCount: 1 });
         expect(result).toBe(false);
     });
 
@@ -34,7 +34,7 @@ describe("checkGameWin", () => {
         grid[0][0].isOpen = true;
         grid[0][1].isOpen = true;
 
-        const result = checkGameWin({ grid, mines: 0 });
+        const result = checkGameWin({ grid, minesCount: 0 });
         expect(result).toBe(true);
     });
 
@@ -43,7 +43,7 @@ describe("checkGameWin", () => {
 
         grid[0][0].isOpen = true;
 
-        const result = checkGameWin({ grid, mines: 0 });
+        const result = checkGameWin({ grid, minesCount: 0 });
         expect(result).toBe(false);
     });
 });
