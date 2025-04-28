@@ -1,18 +1,16 @@
 import { TCell } from "@/types/models/cell";
 import { Coords } from "@/utils/coords";
+import { getMatrixDimensions } from "@/utils/get-matrix-dimensions.ts";
 
 export const revealEmptyCells = ({
     coords,
     cells,
-    rows,
-    cols,
 }: {
     coords: Coords;
     cells: TCell[][];
-    rows: number;
-    cols: number;
 }): TCell[][] => {
     const queue: Coords[] = [coords];
+    const { rows, cols } = getMatrixDimensions(cells);
 
     while (queue.length > 0) {
         const currentCoords = queue.shift()!;

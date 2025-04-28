@@ -1,5 +1,6 @@
 import { TCell } from "@/types/models/cell.ts";
 import { Coords } from "@/utils/coords.ts";
+import { getMatrixDimensions } from "@/utils/get-matrix-dimensions.ts";
 import { shuffle } from "@/utils/shuffle.ts";
 
 export const placeMines = ({
@@ -23,15 +24,14 @@ export const placeMines = ({
             }
             return true;
         });
-    const rows = initialGrid.length;
-    const columns = initialGrid[0].length;
+    const { rows, cols } = getMatrixDimensions(initialGrid);
 
     const coordsWithMinesSet = new Set(
         shuffle(flatInitialGridCoords).slice(0, minesCount),
     );
 
     for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < columns; j++) {
+        for (let j = 0; j < cols; j++) {
             const c = cells[i][j].coords.toString();
             if (coordsWithMinesSet.has(c)) {
                 cells[i][j].hasMine = true;
@@ -39,7 +39,7 @@ export const placeMines = ({
                 for (const neighbourCellCoords of [...cells[i][j].coords]) {
                     if (
                         neighbourCellCoords.getX < rows &&
-                        neighbourCellCoords.getY < columns &&
+                        neighbourCellCoords.getY < cols &&
                         !cells[neighbourCellCoords.getX][
                             neighbourCellCoords.getY
                         ].hasMine
