@@ -23,8 +23,8 @@ export const placeMines = ({
             }
             return true;
         });
-    const rows = initialGrid[0].length;
-    const columns = initialGrid.length;
+    const rows = initialGrid.length;
+    const columns = initialGrid[0].length;
 
     const coordsWithMinesSet = new Set(
         shuffle(flatInitialGridCoords).slice(0, minesCount),
