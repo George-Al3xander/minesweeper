@@ -6,7 +6,7 @@ import { describe, expect, it, vi } from "vitest";
 
 describe("placeMines", () => {
     it("should place the correct number of mines", () => {
-        const grid = createInitialGrid({ rows: 3, columns: 3 });
+        const grid = createInitialGrid({ rows: 3, cols: 3 });
         const result = placeMines({ initialGrid: grid, minesCount: 3 });
 
         const placedMines = result.flat().filter((cell) => cell.hasMine);
@@ -14,7 +14,7 @@ describe("placeMines", () => {
     });
 
     it("should avoid placing mines on coordsToIgnore", () => {
-        const grid = createInitialGrid({ rows: 3, columns: 3 });
+        const grid = createInitialGrid({ rows: 3, cols: 3 });
         const ignoreCoords = [new Coords(1, 1)];
 
         const result = placeMines({
@@ -32,7 +32,7 @@ describe("placeMines", () => {
             return ["(1,1)", ...arr.filter((c) => c !== "(1,1)")];
         });
 
-        const grid = createInitialGrid({ rows: 3, columns: 3 });
+        const grid = createInitialGrid({ rows: 3, cols: 3 });
         const result = placeMines({ initialGrid: grid, minesCount: 1 });
 
         expect(result[1][1].hasMine).toBe(true);

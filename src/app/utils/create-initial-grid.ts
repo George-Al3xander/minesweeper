@@ -3,16 +3,16 @@ import { Coords } from "@/utils/coords";
 
 export const createInitialGrid = ({
     rows,
-    columns,
+    cols,
 }: {
     rows: number;
-    columns: number;
+    cols: number;
 }): TCell[][] => {
     const cells: TCell[][] = [];
 
     for (let i = 0; i < rows; i++) {
         const row: TCell[] = [];
-        for (let j = 0; j < columns; j++) {
+        for (let j = 0; j < cols; j++) {
             const coords = new Coords(i, j);
             row.push({
                 isFlagged: false,

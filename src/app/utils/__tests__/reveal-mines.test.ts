@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 describe("revealMines", () => {
     it("opens only the cells that have mines", () => {
-        const grid = createInitialGrid({ rows: 3, columns: 3 });
+        const grid = createInitialGrid({ rows: 3, cols: 3 });
 
         grid[0][0].hasMine = true;
         grid[2][2].hasMine = true;
@@ -23,7 +23,7 @@ describe("revealMines", () => {
     });
 
     it("returns a new grid reference (not the same object)", () => {
-        const grid = createInitialGrid({ rows: 2, columns: 2 });
+        const grid = createInitialGrid({ rows: 2, cols: 2 });
         grid[0][0].hasMine = true;
 
         const revealed = revealMines(grid);
