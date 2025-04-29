@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-html {
-    font-family: "Jersey 10", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+@theme {
+    --color-background: #181a1b;
+    --color-foreground: #ffffff;
+    --font-primary: "Jersey 10", sans-serif;
 }
