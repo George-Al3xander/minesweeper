@@ -1,7 +1,35 @@
 @import "tailwindcss";
 
 @theme {
+    --color-primary: rgba(189, 189, 189, 255);
+    --color-secondary: rgba(123, 123, 123, 255);
+    --color-accent: #ffffff;
     --color-background: #181a1b;
     --color-foreground: #ffffff;
+    --color-one: #0000ff;
+    --color-two: #008200;
+    --color-three: #fe0000;
+    --color-four: #000084;
+    --color-five: #840000;
+    --color-six: #008284;
+    --color-seven: #840084;
+    --color-eight: #757575;
+
     --font-primary: "Jersey 10", sans-serif;
+}
+
+.cell {
+    @apply bg-primary border-secondary box-border border-t-2 border-l-2 text-4xl;
+}
+
+.cell-closed {
+    @apply border-4;
+}
+
+.three-d-borders {
+    @apply border-l-accent border-t-accent border-r-secondary border-b-secondary;
+}
+
+.three-d-borders-flipped {
+    @apply border-l-secondary border-t-secondary border-r-accent border-b-accent;
 }
