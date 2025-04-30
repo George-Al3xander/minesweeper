@@ -19,7 +19,11 @@
 }
 
 .cell {
-    @apply bg-primary border-secondary box-border border-t-2 border-l-2 text-4xl;
+    @apply bg-primary box-border text-4xl;
+}
+
+.cell-opened {
+    @apply border-secondary border-t-2 border-r-0 border-b-0 border-l-2;
 }
 
 .cell-closed {

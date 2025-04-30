@@ -44,9 +44,10 @@ export const CellContent: FC<Props> = memo(
         return (
             <span
                 className={cn(
-                    "bg-primary cell absolute inset-0 flex size-full items-center justify-center",
+                    "cell absolute inset-0 flex size-full items-center justify-center",
                     {
                         "cell-closed three-d-borders": !isOpen,
+                        "cell-opened": isOpen,
                     },
                 )}
             >
