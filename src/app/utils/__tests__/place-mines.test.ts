@@ -6,19 +6,19 @@ import { describe, expect, it, vi } from "vitest";
 
 describe("placeMines", () => {
     it("should place the correct number of mines", () => {
-        const grid = createInitialGrid({ rows: 3, cols: 3 });
-        const result = placeMines({ initialGrid: grid, mines: 3 });
+        const cells = createInitialGrid({ rows: 3, cols: 3 });
+        const result = placeMines({ cells, mines: 3 });
 
         const placedMines = result.flat().filter((cell) => cell.hasMine);
         expect(placedMines.length).toBe(3);
     });
 
     it("should avoid placing mines on coordsToIgnore", () => {
-        const grid = createInitialGrid({ rows: 3, cols: 3 });
+        const cells = createInitialGrid({ rows: 3, cols: 3 });
         const ignoreCoords = [new Coords(1, 1)];
 
         const result = placeMines({
-            initialGrid: grid,
+            cells,
             mines: 5,
             coordsToIgnore: ignoreCoords,
         });
@@ -32,8 +32,8 @@ describe("placeMines", () => {
             return ["(1,1)", ...arr.filter((c) => c !== "(1,1)")];
         });
 
-        const grid = createInitialGrid({ rows: 3, cols: 3 });
-        const result = placeMines({ initialGrid: grid, mines: 1 });
+        const cells = createInitialGrid({ rows: 3, cols: 3 });
+        const result = placeMines({ cells, mines: 1 });
 
         expect(result[1][1].hasMine).toBe(true);
 
