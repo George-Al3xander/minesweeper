@@ -12,12 +12,12 @@ const difficultyColors: Record<TGameDifficulty, string> = {
 };
 
 export const DifficultiesMenu = () => {
-    const { startGame } = useGamePhaseActions();
+    const { setGamePhase } = useGamePhaseActions();
     const setGameDifficulty = useSetGameDifficulty();
 
     const handleSelectDifficulty = (difficulty: TGameDifficulty) => {
         setGameDifficulty(difficulty);
-        startGame();
+        setGamePhase("idle");
     };
 
     return (

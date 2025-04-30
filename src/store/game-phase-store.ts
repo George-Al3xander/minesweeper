@@ -1,9 +1,9 @@
 import { create } from "zustand/react";
 
-type TGamePhase = "menu" | "playing" | "ended";
+type TGamePhase = "menu" | "idle" | "playing" | "ended";
 
 type GamePhaseActions = {
-    startGame: () => void;
+    setGamePhase: (phase: TGamePhase) => void;
     declareVictory: () => void;
     declareLoss: () => void;
 };
@@ -18,7 +18,7 @@ const gamePhaseStore = create<GamePhaseState>((set) => ({
     phase: "menu",
     hasWon: false,
     actions: {
-        startGame: () => set(() => ({ phase: "playing" })),
+        setGamePhase: (phase: TGamePhase) => set(() => ({ phase })),
         declareVictory: () => set(() => ({ hasWon: true, phase: "ended" })),
         declareLoss: () => set(() => ({ phase: "ended" })),
     },

@@ -16,9 +16,9 @@ export const useGameBoard = (config: {
     mines: number;
 }) => {
     const [cells, setCells] = useState<TCell[][]>(createInitialGrid(config));
-    const [isFirstClick, setIsFirstClick] = useState(true);
+
     const gamePhase = useGamePhase();
-    const { declareVictory, declareLoss } = useGamePhaseActions();
+    const { declareVictory, declareLoss, setGamePhase } = useGamePhaseActions();
     const setFlagsCounter = useSetFlagsCounter();
 
     const toggleFlagOnCell = (c: Coords): MouseEventHandler<HTMLElement> => {
@@ -42,8 +42,8 @@ export const useGameBoard = (config: {
 
             let newCells: TCell[][] = Array.from(cells);
 
-            if (isFirstClick) {
-                setIsFirstClick(false);
+            if (gamePhase === "idle") {
+                setGamePhase("playing");
                 newCells = placeMines({
                     cells,
                     coordsToIgnore: [c],
@@ -78,7 +78,7 @@ export const useGameBoard = (config: {
 
     const resetGame = () => {
         setCells(createInitialGrid(config));
-        setIsFirstClick(true);
+        setGamePhase("idle");
         setFlagsCounter(config.mines);
     };
 
