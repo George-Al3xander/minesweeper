@@ -8,7 +8,7 @@ import { useSetFlagsCounter } from "@/store/flags-counter-store";
 import { useGamePhase, useGamePhaseActions } from "@/store/game-phase-store";
 import { TCell } from "@/types/models/cell";
 import { Coords } from "@/utils/coords";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 export const useGameBoard = (config: {
     rows: number;
@@ -21,51 +21,59 @@ export const useGameBoard = (config: {
     const { declareVictory, declareLoss } = useGamePhaseActions();
     const setFlagsCounter = useSetFlagsCounter();
 
-    const toggleFlagOnCell = (c: Coords): void => {
-        const newCells: TCell[][] = Array.from(cells);
-        const cell = newCells[c.getX][c.getY];
-        const isOperable = !cell.isOpen && gamePhase != "ended";
+    const toggleFlagOnCell = (c: Coords): MouseEventHandler<HTMLElement> => {
+        return (e) => {
+            e.preventDefault();
+            const newCells: TCell[][] = Array.from(cells);
+            const cell = newCells[c.getX][c.getY];
+            const isOperable = !cell.isOpen && gamePhase != "ended";
 
-        if (isOperable) {
-            cell.isFlagged = !cell.isFlagged;
-            setFlagsCounter(countFlags({ cells: newCells, ...config }));
-            setCells(newCells);
-        }
+            if (isOperable) {
+                cell.isFlagged = !cell.isFlagged;
+                setFlagsCounter(countFlags({ cells: newCells, ...config }));
+                setCells(newCells);
+            }
+        };
     };
 
-    const openCell = (c: Coords): void => {
-        let newCells: TCell[][] = Array.from(cells);
+    const openCell = (c: Coords): MouseEventHandler<HTMLElement> => {
+        return (e) => {
+            e.preventDefault();
 
-        if (isFirstClick) {
-            setIsFirstClick(false);
-            newCells = placeMines({
-                cells,
-                coordsToIgnore: [c],
-                ...config,
-            });
-        }
+            let newCells: TCell[][] = Array.from(cells);
 
-        const cell = newCells[c.getX][c.getY];
-        const isOperable =
-            !cell.isOpen && !cell.isFlagged && gamePhase != "ended";
-        const hasMine = cell.hasMine;
-        const isEmpty = cell.neighborMinesCount === 0;
-
-        if (isOperable) {
-            cell.isOpen = true;
-
-            if (hasMine) {
-                newCells = revealMines(newCells);
-                declareLoss();
-            } else if (isEmpty) {
-                newCells = revealEmptyCells({
-                    coords: c,
-                    cells: newCells,
+            if (isFirstClick) {
+                setIsFirstClick(false);
+                newCells = placeMines({
+                    cells,
+                    coordsToIgnore: [c],
+                    ...config,
                 });
             }
-            if (checkGameWin({ cells: newCells, ...config })) declareVictory();
-            setCells(newCells);
-        }
+
+            const cell = newCells[c.getX][c.getY];
+            const isOperable =
+                !cell.isOpen && !cell.isFlagged && gamePhase != "ended";
+            const hasMine = cell.hasMine;
+            const isEmpty = cell.neighborMinesCount === 0;
+
+            if (isOperable) {
+                cell.isOpen = true;
+
+                if (hasMine) {
+                    newCells = revealMines(newCells);
+                    declareLoss();
+                } else if (isEmpty) {
+                    newCells = revealEmptyCells({
+                        coords: c,
+                        cells: newCells,
+                    });
+                }
+                if (checkGameWin({ cells: newCells, ...config }))
+                    declareVictory();
+                setCells(newCells);
+            }
+        };
     };
 
     const resetGame = () => {
