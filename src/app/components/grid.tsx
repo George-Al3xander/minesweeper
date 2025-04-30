@@ -9,7 +9,7 @@ export const Grid = () => {
     );
 
     return (
-        <table className="bg-primary border-primary three-d-borders flex flex-col border-4 p-3">
+        <table className="flex flex-col">
             <tbody className="three-d-borders-flipped box-border border-4">
                 {cells.map((r, rowNum) => (
                     <tr key={"row-" + rowNum}>
