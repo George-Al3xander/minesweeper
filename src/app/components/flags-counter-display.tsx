@@ -1,6 +1,6 @@
 import { DigitalNumberDisplay } from "@/app/components/digital-number-display";
-import { useFlagsCounter } from "@/store/flags-counter-store";
+import { useCountFlags } from "@/app/hooks/use-count-flags";
 
 export const FlagsCounterDisplay = () => (
-    <DigitalNumberDisplay value={useFlagsCounter()} />
+    <DigitalNumberDisplay value={useCountFlags()} />
 );
