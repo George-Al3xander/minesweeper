@@ -1,12 +1,8 @@
 import { CellContent } from "@/app/components/cell-content";
 import { useGameBoard } from "@/app/hooks/use-game-board";
-import { gameDifficultiesConfig } from "@/configs/game-difficulties";
-import { useGameDifficulty } from "@/store/game-difficulty-store";
 
 export const Grid = () => {
-    const { cells, openCell, toggleFlagOnCell } = useGameBoard(
-        gameDifficultiesConfig[useGameDifficulty()],
-    );
+    const { cells, openCell, toggleFlagOnCell } = useGameBoard();
 
     return (
         <table className="flex flex-col">
