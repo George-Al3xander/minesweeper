@@ -5,14 +5,14 @@ export const Grid = () => {
     const { cells, openCell, toggleFlagOnCell } = useGameBoard();
 
     return (
-        <table className="flex flex-col">
+        <table className="table-fixed border-collapse flex-col">
             <tbody className="three-d-borders-flipped box-border border-4">
                 {cells.map((r, rowNum) => (
                     <tr key={"row-" + rowNum}>
                         {r.map((c) => (
                             <td
                                 key={"row" + c.toString()}
-                                className="relative size-8 text-center text-lg"
+                                className="min-size-8 relative size-8 min-h-8 min-w-8 p-0 text-center text-lg"
                                 onClick={openCell(c.coords)}
                                 onContextMenu={toggleFlagOnCell(c.coords)}
                             >
