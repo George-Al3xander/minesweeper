@@ -26,3 +26,9 @@ const gamePhaseStore = create<GamePhaseState>((set) => ({
 
 export const useGamePhase = (): TGamePhase => gamePhaseStore((s) => s.phase);
 export const useGamePhaseActions = () => gamePhaseStore((s) => s.actions);
+export const useLostStatus = (): boolean => {
+    const phase = gamePhaseStore((s) => s.phase);
+    const hasWon = gamePhaseStore((s) => s.hasWon);
+
+    return phase === "ended" && !hasWon;
+};
