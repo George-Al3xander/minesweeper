@@ -4,6 +4,14 @@ import { createInitialGrid } from "@/app/utils/create-initial-grid";
 import { placeMines } from "@/app/utils/place-mines";
 import { revealEmptyCells } from "@/app/utils/reveal-empty-cells";
 import { revealMines } from "@/app/utils/reveal-mines";
+import {
+    playEmptyRevealSound,
+    playFlagPlaceSound,
+    playFlagRemoveSound,
+    playGameOverSound,
+    playGameWinSound,
+    playNumberRevealSound,
+} from "@/app/utils/sfx";
 import { useCells, useSetCells } from "@/store/cells-store";
 import { useGamePhase, useGamePhaseActions } from "@/store/game-phase-store";
 import { TCell } from "@/types/models/cell";
@@ -44,6 +52,8 @@ export const useGameBoard = () => {
         if (!cell.isOpen) {
             cell.isFlagged = !cell.isFlagged;
             setCells(newCells);
+            if (cell.isFlagged) playFlagRemoveSound();
+            else playFlagPlaceSound();
         }
     });
 
@@ -56,14 +66,22 @@ export const useGameBoard = () => {
             if (cell.hasMine) {
                 newCells = revealMines(newCells);
                 declareLoss();
+                playGameOverSound();
             } else if (cell.neighborMinesCount === 0) {
+                playEmptyRevealSound();
                 newCells = revealEmptyCells({
                     coords: c,
                     cells: newCells,
                 });
+            } else {
+                playNumberRevealSound();
             }
-            if (checkGameWin({ cells: newCells, mines: config.mines }))
+
+            if (checkGameWin({ cells: newCells, mines: config.mines })) {
                 declareVictory();
+                playGameWinSound();
+            }
+
             setCells(newCells);
         }
     });
