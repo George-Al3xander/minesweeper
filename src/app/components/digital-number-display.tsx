@@ -15,7 +15,7 @@ export const DigitalNumberDisplay: FC<Props> = ({
     }).format(value);
 
     return (
-        <div className="three-d-borders-flipped flex flex-col border-2 bg-black px-4 text-4xl leading-[0.8] tracking-tight text-red-600 tabular-nums">
+        <div className="three-d-borders-flipped flex min-w-[6ch] flex-col justify-center border-2 bg-black px-4 text-center text-4xl leading-[0.8] tracking-tight text-red-600 tabular-nums">
             {number}
         </div>
     );
