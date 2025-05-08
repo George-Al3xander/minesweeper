@@ -1,14 +1,19 @@
-import { useGamePhaseActions, useLostStatus } from "@/store/game-phase-store";
+import { useGamePhaseActions } from "@/store/game-phase-store";
 import { SadIcon, SmileIcon } from "@/ui/icons";
+import { FC } from "react";
 
-export const ResetButton = () => {
+type Props = {
+    hasLost: boolean;
+};
+
+export const ResetButton: FC<Props> = ({ hasLost }) => {
     const { setGamePhase } = useGamePhaseActions();
 
     const resetGame = () => {
         setGamePhase("menu");
     };
 
-    const Icon = useLostStatus() ? SadIcon : SmileIcon;
+    const Icon = hasLost ? SadIcon : SmileIcon;
 
     return (
         <button
