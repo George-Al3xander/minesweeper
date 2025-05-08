@@ -6,6 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react(), tailwindcss(), tsconfigPaths()],
+    base: "/minesweeper/",
     server: {
         open: true,
         port: 3000,
