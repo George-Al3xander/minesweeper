@@ -2,6 +2,23 @@
 
 A modern implementation of the classic **Minesweeper** game built with **React 19**, **TypeScript**, **Tailwind CSS**, and **Vite**.
 
+---
+
+## 🖼️ Image Demonstrations
+
+Here are some screenshots demonstrating the gameplay:
+
+### Menu
+![Menu](public/assets/readme/menu.webp)
+
+### Game Board
+![Game Board](public/assets/readme/game-board.webp)
+
+### Loss screen
+![Loss screen](public/assets/readme/loss-screen.webp)
+
+---
+
 ## 🚀 Features
 
 - ⚛️ React 19 + TypeScript
@@ -25,6 +42,27 @@ A modern implementation of the classic **Minesweeper** game built with **React 1
 - **Howler.js**
 - **Vitest**
 - **Prettier**, **ESLint**, **Husky**
+
+---
+
+## 🧩 Project Structure
+
+```
+src/
+├── app/
+│   ├── App.tsx          # Root component
+│   ├── main.tsx         # Entry point
+│   ├── components/      # Game-specific components (e.g. Board, Cell)
+│   ├── hooks/           # Custom hooks
+│   └── utils/           # Local game utilities
+├── configs/
+│   └── game-difficulties.ts  # Preset difficulty settings
+├── store/              # Global Zustand state
+├── styles/             # Tailwind and global styles
+├── types/              # Shared TypeScript types
+├── ui/                 # Reusable UI components (e.g. Button, Modal)
+└── utils/              # General-purpose utilities
+```
 
 ---
 
@@ -64,44 +102,6 @@ pnpm format    # Prettier
 ```
 
 Pre-commit hooks ensure lint and test checks before each commit.
-
----
-
-## 🖼️ Image Demonstrations
-
-Here are some screenshots demonstrating the gameplay:
-
-### Menu
-![Menu](public/assets/readme/menu.webp)
-
-### Game Board
-![Game Board](public/assets/readme/game-board.webp)
-
-### Loss screen
-![Loss screen](public/assets/readme/loss-screen.webp)
-
-
-
----
-
-## 🧩 Project Structure
-
-```
-src/
-├── app/
-│   ├── App.tsx          # Root component
-│   ├── main.tsx         # Entry point
-│   ├── components/      # Game-specific components (e.g. Board, Cell)
-│   ├── hooks/           # Custom hooks
-│   └── utils/           # Local game utilities
-├── configs/
-│   └── game-difficulties.ts  # Preset difficulty settings
-├── store/              # Global Zustand state
-├── styles/             # Tailwind and global styles
-├── types/              # Shared TypeScript types
-├── ui/                 # Reusable UI components (e.g. Button, Modal)
-└── utils/              # General-purpose utilities
-```
 
 ---
 
