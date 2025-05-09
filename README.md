@@ -1,54 +1,133 @@
-# React + TypeScript + Vite
+# Minesweeper 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern implementation of the classic **Minesweeper** game built with **React 19**, **TypeScript**, **Tailwind CSS**, and **Vite**.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛️ React 19 + TypeScript
+- 🎨 Tailwind CSS for styling
+- 🧠 Global state with Zustand
+- ⏱️ Timer with `react-timer-hook`
+- 🔊 Sound effects via Howler.js
+- 🎉 Confetti celebration using `react-confetti`
+- ⚡ Instant dev/build with Vite
+- ✅ Strict linting, formatting, testing, and pre-commit checks
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React**, **ReactDOM**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **Zustand**
+- **Howler.js**
+- **Vitest**
+- **Prettier**, **ESLint**, **Husky**
+
+---
+
+## 🛠️ Scripts
+
+| Script           | Description                                      |
+|------------------|--------------------------------------------------|
+| `dev`            | Start dev server                                 |
+| `dev:host`       | Serve locally and over LAN                       |
+| `build`          | Type-check and create production build           |
+| `preview`        | Preview the built app                            |
+| `lint`           | Run ESLint                                       |
+| `format`         | Format files using Prettier                      |
+| `test`           | Run all tests                                    |
+| `test:watch`     | Run tests in watch mode                          |
+| `test:coverage`  | Generate coverage report                         |
+| `prepare`        | Setup Git hooks with Husky                       |
+| `pre-commit`     | Run lint + tests before commit                   |
+
+---
+
+## 🧪 Testing
+
+```bash
+pnpm test            # Run all tests
+pnpm test:watch      # Run tests in watch mode
+pnpm test:coverage   # Coverage report
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧷 Linting & Formatting
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+pnpm lint      # ESLint
+pnpm format    # Prettier
 ```
+
+Pre-commit hooks ensure lint and test checks before each commit.
+
+---
+
+## 🖼️ Image Demonstrations
+
+Here are some screenshots demonstrating the gameplay:
+
+### Menu
+![Menu](public/assets/readme/menu.webp)
+
+### Game Board
+![Game Board](public/assets/readme/game-board.webp)
+
+### Loss screen
+![Loss screen](public/assets/readme/loss-screen.webp)
+
+
+
+---
+
+## 🧩 Project Structure
+
+```
+src/
+├── app/
+│   ├── App.tsx          # Root component
+│   ├── main.tsx         # Entry point
+│   ├── components/      # Game-specific components (e.g. Board, Cell)
+│   ├── hooks/           # Custom hooks
+│   └── utils/           # Local game utilities
+├── configs/
+│   └── game-difficulties.ts  # Preset difficulty settings
+├── store/              # Global Zustand state
+├── styles/             # Tailwind and global styles
+├── types/              # Shared TypeScript types
+├── ui/                 # Reusable UI components (e.g. Button, Modal)
+└── utils/              # General-purpose utilities
+```
+
+---
+
+## 📄 Commit Guidelines
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+Example commit messages:
+
+```
+feat: add support for Expert difficulty  
+fix: correct timer reset behavior  
+```
+
+---
+
+## ▶️ Getting Started
+
+```bash
+pnpm install    # Install dependencies
+pnpm dev        # Start development server
+```
+
+
+---
+
+## 📄 License
+
+MIT 
