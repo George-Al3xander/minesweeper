@@ -9,13 +9,13 @@ A modern implementation of the classic **Minesweeper** game built with **React 1
 Here are some screenshots demonstrating the gameplay:
 
 ### Menu
-![Menu](public/assets/readme/menu.webp)
+![Menu](assets/readme/menu.webp)
 
 ### Game Board
-![Game Board](public/assets/readme/game-board.webp)
+![Game Board](assets/readme/game-board.webp)
 
 ### Loss screen
-![Loss screen](public/assets/readme/loss-screen.webp)
+![Loss screen](assets/readme/loss-screen.webp)
 
 ---
 
