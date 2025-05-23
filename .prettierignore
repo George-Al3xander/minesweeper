@@ -1,9 +1,0 @@
-**/node_modules
-**/public
-**/build
-**/assets
-**/*.lock
-**/*-lock.yaml
-**/yarn.lock
-**/*.md
-**/*.mdx
